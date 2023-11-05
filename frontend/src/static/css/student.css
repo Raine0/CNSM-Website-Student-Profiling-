@@ -1,0 +1,150 @@
+/* Styling for the StudentForm component */
+.student-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 1500px;
+    margin: 0 auto;
+  }
+  .name-container input{
+    width: 350px;
+    margin-left: 30px;
+  }
+  input.input-field {
+    width: 275px;
+  }
+  label {
+    text-align: left;
+  }
+  .name-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .address-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .address-container input[name=house_number]{
+      width: 500px;
+  }
+  .address-container input[name=city]{
+    width: 300px;
+  }
+  .address-container input[name=province]{
+    width: 300px;
+  }
+  .address-container input[name=zip]{
+    width: 150px;
+  }
+
+
+  .input-field, .select-field, input.input-field {
+    width: 250px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .submit-button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .submit-button:hover {
+    background-color: #1D1B1E;
+  }
+  
+  /* Styling for the StudentList component */
+  
+  /* Container for the student list */
+  .table-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 1250px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for the student table */
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .student-table th, .student-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .student-table th {
+    background-color: #780107;
+    color: #fff;
+  }
+  
+  .student-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .student-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Styling for the "Edit" and "Delete" buttons */
+  button {
+    padding: 4px 8px;
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .link-profile {
+    text-decoration: none;
+    color: #fff; /* Change to your preferred text color */
+  }
+  button:hover {
+    background-color: #1D1B1E;
+  }
+  
+  /* Styling for input fields */
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Styling for the "Update Student" button */
+  .submit-button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .submit-button:hover {
+    background-color: #1D1B1E;
+  }
+  
