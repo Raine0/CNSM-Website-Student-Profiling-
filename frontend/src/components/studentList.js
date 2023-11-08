@@ -126,12 +126,18 @@ const StudentList = () => {
             <th>Last Name</th>
             <th>Year Level</th>
             <th>Department</th>
-            <th>Classification</th>
             <th>Course</th>
+            <th>Track</th>
+            <th>Role</th>
             <th>Address</th>
             <th>Contact</th>
-            <th>Blood Type</th>
             <th>Email</th>
+            <th>Birthdate</th>
+            <th>Emergenct Contact</th>
+            <th>Last School Attended</th>
+            <th>Hobbies</th>
+            <th>Skills</th>
+            <th>Sports</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -142,11 +148,20 @@ const StudentList = () => {
               <td>{student.last_name}</td>
               <td>{student.year_level}</td>
               <td>{departments.find((department) => department._id === student.department)?.name || "Unknown" }</td> {/* Assuming "department" is a reference to a department with a "name" field */}
-              <td>{classifications.find((classification) => classification._id === student.classification)?.description || "Unknown" } </td> {/* Assuming "classification" has a "description" field */}
               <td>{courses.find((course) => course._id === student.course)?.name || "Unknown"}</td> {/* Assuming "course" is a reference to a course with a "name" field */}
+              <td>{courses.find((course) => course._id === student.course)?.track || "Unknown"}</td>
+              <td>{student.role}</td>
+              <td>
+                {`${student.address.house_no}, ${student.address.street}, ${student.address.baranggay}, ${student.address.city}, ${student.address.province}, ${student.address.zip_code}`}
+              </td>
               <td>{student.contact}</td>
-              <td>{student.blood_type}</td>
               <td>{student.email}</td>
+              <td>{student.birthdate}</td>
+              <td>{student.emergency_contact}</td>
+              <td>{student.last_school_attended}</td>
+              <td>{student.hobbies}</td>
+              <td>{student.skills}</td>
+              <td>{student.sports}</td>
               <td>
                 <button onClick={() => handleEdit(student._id)}>Edit</button>
                 <button onClick={() => handleDelete(student._id)}>Delete</button>

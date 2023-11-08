@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CourseForm = () => {
   const [formData, setFormData] = useState({
@@ -8,12 +8,26 @@ const CourseForm = () => {
     description: '',
   });
 
+  const [departments, setDepartments] = useState([]);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    // Fetch departments from your backend API
+    fetch('/api/departments')
+      .then((response) => response.json())
+      .then((data) => {
+        setDepartments(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching departments:', error);
+      });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +56,7 @@ const CourseForm = () => {
   };
 
   return (
-    <div class="course-form">
+    <div className="course-form">
         <h2>Create a Course</h2>
         <form onSubmit={handleSubmit}>
             <input

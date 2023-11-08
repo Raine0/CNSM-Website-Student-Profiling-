@@ -24,6 +24,7 @@ const createCourse = async (req, res) => {
 
         const course = new Course({
             name,
+            department,
             track,
             curriculum_rv_date,
             description,

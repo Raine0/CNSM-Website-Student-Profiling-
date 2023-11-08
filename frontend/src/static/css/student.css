@@ -17,11 +17,42 @@
   label {
     text-align: left;
   }
-  .name-container {
+  .name-container, .address-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .studentinterest-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Horizontally center elements */
+  }
+
+  .department-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Horizontally center elements */
+  }
+
+  .studentinfo-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Horizontally center elements */
+  }
+
+  .otherinfo-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3px;
   }
 
   .address-container {
@@ -75,7 +106,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 1250px;
+    width: 1800px;
     margin: 0 auto;
   }
   

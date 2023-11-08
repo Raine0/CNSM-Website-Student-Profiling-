@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer'); // Import multer for handling file uploads
 const { Student } = require('../models/studentModel'); // model Path
 const { Department } = require('../models/departmentModel'); // Import the Department model
-const { Classification } = require('../models/classModel'); // Import the Classification model
+// const { Classification } = require('../models/classModel'); // Import the Classification model
 const { Course } = require('../models/courseModel'); // Import the Course model
 
 
@@ -26,8 +26,8 @@ const createStudent = async (req, res) => {
             middle_name,
             year_level,
             student_id,
+            role,
             department,
-            classification,
             course,
             house_no,
             street,
@@ -40,21 +40,33 @@ const createStudent = async (req, res) => {
             birthdate,
             emergency_contact,
             last_school_attended,
+            hobbies,
+            skills,
+            sports,
         } = req.body;
 
+        const address = {
+            house_no,
+            street,
+            baranggay,
+            city,
+            province,
+            zip_code,
+        };
+
         // Check if any of the required parameters are missing
-        if (!first_name || !last_name || !year_level || !department || !course) {
+        /* if (!first_name || !last_name || !year_level || !department || !course) {
             return res.status(400).json({ error: 'Missing one or more required parameters' });
-        }
+        } */
 
-        // Validate that department, classification, and course references exist
-        const departmentExists = await Department.findById(department);
+        // Validate that department, and course references exist
+        /* const departmentExists = await Department.findById(department); */
         /* const classificationExists = await Classification.findById(classification); */
-        const courseExists = await Course.findById(course);
+        /* onst courseExists = await Course.findById(course); */
 
-        if (!departmentExists || !courseExists) {
-            return res.status(400).json({ error: 'Invalid department, classification, or course reference' });
-        }
+        /* if (!departmentExists || !courseExists) {
+            return res.status(400).json({ error: 'Invalid department, or course reference' });
+        } */
 
         const student = new Student({
             first_name,
@@ -62,20 +74,18 @@ const createStudent = async (req, res) => {
             middle_name,
             year_level,
             student_id,
+            role,
             department,
-            classification,
             course,
-            house_no,
-            street,
-            baranggay,
-            city,
-            province,
-            zip_code,
+            address, // Combine address values into a single attribute
             contact,
             email,
             birthdate,
             emergency_contact,
             last_school_attended,
+            hobbies,
+            skills,
+            sports,
         });
 
         await student.save();
@@ -122,16 +132,20 @@ const updateStudentById = async (req, res) => {
         student.year_level = req.body.year_level || student.year_level;
         student.student_id = req.body.student_id || student.student_id;
         student.department = req.body.department || student.department;
-        student.classification = req.body.classification || student.classification;
+        // student.classification = req.body.classification || student.classification;
+
+        // Combine address values into a single attribute
+        student.address = {
+            house_no: req.body.house_no || student.address.house_no,
+            street: req.body.street || student.address.street,
+            baranggay: req.body.baranggay || student.address.baranggay,
+            city: req.body.city || student.address.city,
+            province: req.body.province || student.address.province,
+            zip_code: req.body.zip_code || student.address.zip_code,
+        };
+
         student.course = req.body.course || student.course;
-        student.house_no = req.body.house_no || student.house_no;
-        student.street = req.body.street || student.street;
-        student.baranggay = req.body.baranggay || student.baranggay;
-        student.city = req.body.city || student.city;
-        student.province = req.body.province || student.province;
-        student.zip_code = req.body.zip_code || student.zip_code;
         student.contact = req.body.contact || student.contact;
-        student.blood_type = req.body.blood_type || student.blood_type;
         student.email = req.body.email || student.email;
 
         await student.save();

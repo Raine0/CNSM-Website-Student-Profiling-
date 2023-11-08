@@ -8,7 +8,6 @@ const StudentForm = () => {
     year_level: '',
     student_id: '',
     department: '',
-    classification: '',
     course: '',
     house_no: '',
     street: '',
@@ -96,7 +95,7 @@ const StudentForm = () => {
   };
 
   // Function to render the "Course" dropdown based on the selected department
-  function renderCourseDropdown(selectedDepartment) {
+  /* function renderCourseDropdown(selectedDepartment) {
     // Define a mapping of departments to their corresponding courses
     const departmentToCourses = {
       'IT Department': [
@@ -108,10 +107,10 @@ const StudentForm = () => {
       'Mathematics Department': [
         { code: 'BSMATH', name: 'BS in Mathematics' },
       ],
-    };
+    }; */
     
     // Find the corresponding department's courses
-    const selectedDepartmentCourses = departmentToCourses[selectedDepartment];
+    /* const selectedDepartmentCourses = departmentToCourses[selectedDepartment];
 
     if (selectedDepartmentCourses && selectedDepartmentCourses.length > 0) {
       return (
@@ -132,7 +131,7 @@ const StudentForm = () => {
     }
 
     return null;
-  }
+  } */
 
   return (
     <div className="student-form">
@@ -181,7 +180,7 @@ const StudentForm = () => {
               
           <input
             type="text"
-            name="house_number"
+            name="house_no"
             value={formData.address}
             onChange={handleChange}
             placeholder="House No."
@@ -197,7 +196,7 @@ const StudentForm = () => {
           />
            <input
             type="text"
-            name="caranggay"
+            name="baranggay"
             value={formData.address}
             onChange={handleChange}
             placeholder="Baranggay"
@@ -222,7 +221,7 @@ const StudentForm = () => {
 
           <input
             type="text"
-            name="zip"
+            name="zip_code"
             value={formData.address}
             onChange={handleChange}
             placeholder="Zip Code"
@@ -248,15 +247,27 @@ const StudentForm = () => {
 
         <input
           type="text"
-          name="student-id"
-          value={formData.year_enrolled}
+          name="student_id"
+          value={formData.student_id}
           onChange={handleChange}
           placeholder="Student ID Number"
           className="input-field"
         />
+
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          className="input-field"
+        >
+          <option value="">Role</option>
+          <option value="Student">Student</option>
+          <option value="Athlete">Athlete</option>
+          <option value="Officer">Officer</option>
+        </select>
         </div>
-       
         
+        <div className='department-container'>
         <select
           name="department"
           value={formData.department}
@@ -265,16 +276,44 @@ const StudentForm = () => {
         >
           <option value="">Select Department</option>
           {departments.map((department) => (
-            <option key={department._id} value={department.name}>
+            <option key={department._id} value={department._id}>
               {department.name}
             </option>
           ))}
         </select>
+
+        <select
+          name="course"
+          value={formData.course}
+          onChange={handleChange}
+          className="input-field"
+        >
+          <option value="">Select Course</option>
+          {courses.map((course) => (
+            <option key={course._id} value={course._id}>
+              {course.name}
+            </option>
+          ))}
+        </select>
+
+        <select
+          name="track"
+          value={formData.track}
+          onChange={handleChange}
+          className="input-field"
+        >
+          <option value="">Select Track</option>
+          {courses.map((course) => (
+            <option key={course._id} value={course._id}>
+              {course.track}
+            </option>
+          ))}
+        </select>
+        </div>
         
+        {/* {formData.department && renderCourseDropdown(formData.department, formData.course)} */}
         
-        {formData.department && renderCourseDropdown(formData.department, formData.course)}
-        
-        <div>
+        <div className='otherinfo-container'>
         <input
           type="text"
           name="birthdate"
@@ -317,6 +356,37 @@ const StudentForm = () => {
           value={formData.last_school_attended}
           onChange={handleChange}
           placeholder="Last School Attended"
+          className="input-field"
+        />
+        </div>
+
+        <label><h2>Student Interests</h2></label>
+        <hr></hr>
+        <div className='studentinterest-container'>
+        <input
+          type="text"
+          name="hobbies"
+          value={formData.hobbies}
+          onChange={handleChange}
+          placeholder="Hobbies"
+          className="input-field"
+        />
+
+        <input
+          type="text"
+          name="skills"
+          value={formData.skills}
+          onChange={handleChange}
+          placeholder="Skills"
+          className="input-field"
+        />
+
+        <input
+          type="text"
+          name="sports"
+          value={formData.sports}
+          onChange={handleChange}
+          placeholder="Sports"
           className="input-field"
         />
         </div>
